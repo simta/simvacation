@@ -89,6 +89,12 @@ objectClass: rfc822mailgroup
 owner: uid=flowerysong,ou=People,dc=example,dc=com
 onVacation: TRUE
 
+dn: cn=emoji group,ou=Groups,dc=example,dc=com
+objectClass: rfc822mailgroup
+owner: uid=flowerysong,ou=People,dc=example,dc=com
+onVacation: TRUE
+umichAutoReply:: 8J+Ps++4j+KAjfCfjIjwn4+z77iP4oCN8J+MiPCfj7PvuI/igI3wn4yI
+
 dn: uid=autoreply,ou=People,dc=example,dc=com
 cn: Test User
 givenName: Testament

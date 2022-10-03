@@ -193,3 +193,13 @@ def test_ldap_group_vacation(run_simvacation, testmsg, tmp_path_factory):
         'Messages to this group are not monitored.',
         'You may want to try a different contact method.',
     ]
+
+
+def test_ldap_group_custom(run_simvacation, testmsg, tmp_path_factory):
+    testmsg['To'] = 'emoji.group@example.com'
+    res = _run_simvacation(run_simvacation, testmsg, tmp_path_factory, rcpt='emoji.group')
+
+    assert res['content']['from'] == '"emoji group" <emoji.group@example.com>'
+    assert res['content'].get_payload().splitlines() == [
+        '🏳️‍🌈🏳️‍🌈🏳️‍🌈',
+    ]
