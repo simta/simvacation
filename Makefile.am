@@ -63,5 +63,5 @@ EXTRA_DIST = COPYING.yasl VERSION simvacation.conf packaging/rpm/simvacation.spe
 embedded_config.h: genimbed$(EXEEXT) simvacation.conf Makefile
 	./genimbed$(EXEEXT) simvacation.conf CONFIG_BASE > embedded_config.h
 
-rpm: dist-xz
-	rpmbuild -ta $(distdir).tar.xz
+rpm: dist-zstd
+	rpmbuild -ta $(distdir).tar.zst

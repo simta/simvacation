@@ -4,7 +4,7 @@ Version:        @PACKAGE_VERSION@
 Release:        1%{?dist}
 License:        BSD and MIT
 URL:            http://its.umich.edu/
-Source0:        %{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.zst
 BuildRequires:  setup
 BuildRequires:  pkgconfig(urcl)
 BuildRequires:  pkgconfig(libucl)

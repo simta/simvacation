@@ -1,4 +1,5 @@
 *.o
+*.swp
 *~
 .deps
 Makefile
@@ -6,6 +7,7 @@ Makefile.in
 VERSION
 aclocal.m4
 autom4te.cache
+compile
 config.guess
 config.h
 config.h.in
@@ -13,11 +15,14 @@ config.log
 config.status
 configure
 depcomp
+dist
+embedded_config.h
+genimbed
 install-sh
 missing
 packaging/rpm/simvacation.spec
 simunvacation
 simvacation
-simvacation-*.tar.xz
+simvacation-*.tar.*
 simvacreport
 stamp-*
