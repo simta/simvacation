@@ -108,7 +108,7 @@ vac_result
 redis_vdb_store_reply(VDB *vdb, const yastr from) {
     time_t now;
     yastr  key;
-    char   value[ 16 ];
+    char   value[ 20 ];
 
     if ((now = time(NULL)) < 0) {
         syslog(LOG_ALERT, "redis vdb_store_reply time: %m");
@@ -116,7 +116,7 @@ redis_vdb_store_reply(VDB *vdb, const yastr from) {
     }
 
     key = redis_vdb_key(vdb->rcpt, from);
-    snprintf(value, 16, "%lld", (long long)now);
+    snprintf(value, 20, "%lld", (long long)now);
 
     urcl_free_result(urcl_command(vdb->redis, key, "SET %s %s", key, value));
     /* expire entries after 7 days. */
