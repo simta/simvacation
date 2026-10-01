@@ -10,22 +10,22 @@
 
 #ifdef HAVE_LDAP
 struct vlu_ldap {
-    LDAP *         ld;
-    LDAPMessage *  result;
+    LDAP          *ld;
+    LDAPMessage   *result;
     struct timeval timeout;
     yastr          default_msg;
     yastr          subject_prefix;
     time_t         interval;
-    const char *   attr_vacation;
-    const char *   attr_vacation_msg;
-    const char *   attr_group_msg;
-    const char *   attr_name;
-    const char *   attr_msg;
-    const char *   attr_autoreply_start;
-    const char *   attr_autoreply_end;
-    const char *   search_base;
-    const char *   group_search_base;
-    char **        attrs;
+    const char    *attr_vacation;
+    const char    *attr_vacation_msg;
+    const char    *attr_group_msg;
+    const char    *attr_name;
+    const char    *attr_msg;
+    const char    *attr_autoreply_start;
+    const char    *attr_autoreply_end;
+    const char    *search_base;
+    const char    *group_search_base;
+    char         **attrs;
 };
 #endif /* HAVE_LDAP */
 
@@ -50,19 +50,19 @@ struct vlu_backend {
 };
 
 struct vlu_backend *vlu_backend(const char *);
-VLU *               vlu_init();
+VLU                *vlu_init();
 vac_result          vlu_search(VLU *, const yastr);
 vac_result          vlu_group_search(VLU *, const yastr);
 yastr               vlu_message(VLU *, const yastr);
 yastr               vlu_subject_prefix(VLU *, const yastr);
 time_t              vlu_interval(VLU *, const yastr);
-ucl_object_t *      vlu_aliases(VLU *, const yastr);
+ucl_object_t       *vlu_aliases(VLU *, const yastr);
 yastr               vlu_name(VLU *, const yastr);
 yastr               vlu_display_name(VLU *, const yastr);
 void                vlu_close(VLU *);
 
 #ifdef HAVE_LDAP
-VLU *         ldap_vlu_init();
+VLU          *ldap_vlu_init();
 vac_result    ldap_vlu_search(VLU *, const yastr);
 vac_result    ldap_vlu_group_search(VLU *, const yastr);
 yastr         ldap_vlu_message(VLU *, const yastr);

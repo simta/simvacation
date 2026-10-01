@@ -6,10 +6,10 @@ on:
 jobs:
   clang_format:
     name: clang-format
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-26.04
     steps:
       - name: Check out code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v7
 
       - name: Lint code formatting
         run: |
@@ -18,10 +18,10 @@ jobs:
           git status --porcelain | grep -q '^ M' && exit 1 || exit 0
 
   flake8:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-26.04
     steps:
       - name: Check out code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v7
 
       - name: Install flake8
         run: sudo pip install flake8
@@ -30,10 +30,10 @@ jobs:
         run: flake8 --max-line-length=160
 
   check:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-26.04
     steps:
       - name: Check out code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v7
         with:
           path: simvacation
           fetch-depth: 0
@@ -52,7 +52,7 @@ jobs:
         run: sudo pip install pytest
 
       - name: Cache built dependencies
-        uses: actions/cache@v2
+        uses: actions/cache@v6
         id: cache-deps
         with:
           path: ${{ github.workspace }}/.deps
@@ -80,8 +80,8 @@ jobs:
       - name: Build simvacation
         run: |
           autoreconf -fiv
-          CFLAGS='-Wall -Werror -fprofile-arcs -ftest-coverage' ./configure --with-cmocka
-          make -j4
+          CFLAGS='-fprofile-arcs -ftest-coverage' ./configure --with-cmocka
+          make -j4 CFLAGS='-Wall -Werror -fprofile-arcs -ftest-coverage'
         working-directory: ${{ github.workspace }}/simvacation
 
       - name: Test simvacation
@@ -95,7 +95,7 @@ jobs:
         working-directory: ${{ github.workspace }}/simvacation
 
       - name: Save code coverage reports
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v7
         with:
           name: gcov
           path: simvacation/*.gcov

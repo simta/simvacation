@@ -30,9 +30,9 @@ main(int argc, char **argv) {
     char         ch;
 
     struct vlu_backend *vlu;
-    VLU *               vluh = NULL;
+    VLU                *vluh = NULL;
     struct vdb_backend *vdb;
-    VDB *               vdbh = NULL;
+    VDB                *vdbh = NULL;
 
     char *config_file = NULL;
 

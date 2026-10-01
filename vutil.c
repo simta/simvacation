@@ -232,7 +232,7 @@ check_from(const yastr from) {
     size_t         len;
     yastr          a;
     yastr          cfrom;
-    char *         p;
+    char          *p;
 
     cfrom = canon_from(from);
     a = yasldup(cfrom);

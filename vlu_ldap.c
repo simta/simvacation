@@ -25,8 +25,8 @@ static time_t     ldap_vlu_time(struct berval *);
 
 VLU *
 ldap_vlu_init() {
-    VLU *         vlu = NULL;
-    const char *  uri = NULL;
+    VLU          *vlu = NULL;
+    const char   *uri = NULL;
     int           protocol = LDAP_VERSION3;
     struct berval credentials = {0};
     int           rc;
@@ -144,7 +144,7 @@ ldap_vlu_time(struct berval *bv_time) {
     yastr     buf;
     time_t    retval = 0;
     struct tm tm_time;
-    char *    tz;
+    char     *tz;
 
     memset(&tm_time, 0, sizeof(struct tm));
     buf = yaslnew(bv_time->bv_val, bv_time->bv_len);
@@ -345,7 +345,7 @@ ucl_object_t *
 ldap_vlu_aliases(VLU *vlu, const yastr rcpt) {
     struct berval **cnames;
     int             i;
-    ucl_object_t *  result;
+    ucl_object_t   *result;
 
     cnames = ldap_get_values_len(vlu->ldap->ld, vlu->ldap->result, "cn");
 
@@ -394,7 +394,7 @@ ldap_vlu_interval(VLU *vlu, const yastr rcpt) {
 
 yastr
 ldap_vlu_name(VLU *vlu, const yastr rcpt) {
-    char * dn;
+    char  *dn;
     LDAPDN ldn = NULL;
     yastr  retval = NULL;
 

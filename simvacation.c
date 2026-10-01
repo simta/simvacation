@@ -52,10 +52,10 @@ main(int argc, char **argv) {
     char *config_file = NULL;
 
     struct vdb_backend *vdb = NULL;
-    VDB *               vdbh = NULL;
+    VDB                *vdbh = NULL;
     struct vlu_backend *vlu = NULL;
-    VLU *               vluh = NULL;
-    struct headers *    hdrs = NULL;
+    VLU                *vluh = NULL;
+    struct headers     *hdrs = NULL;
 
     progname = yaslauto(argv[ 0 ]);
     if ((p = strrchr(progname, '/')) != NULL) {
@@ -184,11 +184,11 @@ done:
 
 struct headers *
 readheaders(const ucl_object_t *names) {
-    struct headers *    h;
-    char *              p;
+    struct headers     *h;
+    char               *p;
     int                 state, stripfield = 0;
     char                buf[ MAXLINE ];
-    yastr *             current_hdr = NULL;
+    yastr              *current_hdr = NULL;
     yastr               rcpt_hdrs = yaslempty();
     ucl_object_iter_t   i;
     const ucl_object_t *obj;

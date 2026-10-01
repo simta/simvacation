@@ -24,8 +24,8 @@ static yastr redis_vdb_key(const yastr, const yastr);
 
 VDB *
 redis_vdb_init(const yastr rcpt) {
-    VDB *       vdb = NULL;
-    VDB *       res = NULL;
+    VDB        *vdb = NULL;
+    VDB        *res = NULL;
     const char *host = "127.0.0.1";
     int64_t     port = 6379;
 

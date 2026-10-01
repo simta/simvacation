@@ -26,7 +26,7 @@ void  lmdb_vdb_assert(MDB_env *, const char *);
 VDB *
 lmdb_vdb_init(const yastr rcpt) {
     int         rc;
-    VDB *       vdb;
+    VDB        *vdb;
     const char *lmdb_path;
 
     if ((lmdb_path = ucl_object_tostring(
@@ -147,7 +147,7 @@ lmdb_vdb_store_reply(VDB *vdb, const yastr from) {
     MDB_txn *txn;
     MDB_dbi  dbi;
     MDB_val  key, data;
-    char *   keyval;
+    char    *keyval;
 
     if ((now = time(NULL)) < 0) {
         syslog(LOG_ALERT, "lmdb vdb_store_reply time: %m");
@@ -192,7 +192,7 @@ lmdb_vdb_store_reply(VDB *vdb, const yastr from) {
 void
 lmdb_vdb_gc(VDB *vdb) {
     int         rc;
-    MDB_txn *   txn;
+    MDB_txn    *txn;
     MDB_dbi     dbi;
     MDB_cursor *cursor;
     MDB_val     key, data;
