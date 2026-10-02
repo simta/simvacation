@@ -5,10 +5,10 @@ on:
       - "*.*.*"
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-26.04
     steps:
       - name: Check out code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v7
         with:
           path: simvacation
           fetch-depth: 0
@@ -20,7 +20,7 @@ jobs:
         run: sudo apt install libbsd-dev libjemalloc-dev libssl-dev liblmdb-dev libldap2-dev libcmocka-dev slapd ldap-utils redis-server libhiredis-dev
 
       - name: Cache built dependencies
-        uses: actions/cache@v2
+        uses: actions/cache@v6
         id: cache-deps
         with:
           path: ${{ github.workspace }}/.deps
@@ -53,7 +53,7 @@ jobs:
         working-directory: ${{ github.workspace }}/simvacation
 
       - name: Save dist tarball
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v7
         with:
           name: dist
           path: ${{ github.workspace }}/simvacation/simvacation-*.tar.zst
