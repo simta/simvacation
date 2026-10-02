@@ -90,6 +90,22 @@ jobs:
         env:
           LDAP_SERVER: ldap://localhost/
 
+      - name: Compress test artifacts
+        run: |
+          tar -caf ${{ github.workspace }}/pytest.tar.zst --ignore-failed-read -C /tmp/pytest-of-runner/pytest-current/ .
+          zstd /var/log/mail.log -o ${{ github.workspace }}/mail.log.zst
+        if: always()
+
+      - name: Upload test artifacts
+        uses: actions/upload-artifact@v7
+        with:
+          name: pytest
+          path: |
+            ${{ github.workspace }}/pytest.tar.zst
+            ${{ github.workspace }}/mail.log.zst
+          retention-days: 7
+        if: always()
+
       - name: Generate coverage reports
         run: gcov *.c
         working-directory: ${{ github.workspace }}/simvacation
