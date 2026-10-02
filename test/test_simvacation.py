@@ -50,8 +50,10 @@ def test_config_nonexist(tool_path):
     res = subprocess.run(
         [
             tool_path('simvacation'),
-            '-c', '/thisisanonexistentfile.conf',
-            '-f', 'testuser@example.com',
+            '-c',
+            '/thisisanonexistentfile.conf',
+            '-f',
+            'testuser@example.com',
             'testuser',
         ]
     )

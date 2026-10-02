@@ -63,7 +63,7 @@ class CMockaItem(pytest.Item):
 
 
 class CMockaException(Exception):
-    """ custom exception """
+    """custom exception"""
 
 
 def openport(port):
@@ -73,7 +73,7 @@ def openport(port):
             socket.create_connection(('localhost', port), 0.1)
             port += 1
             if port > 65535:
-                raise ValueError("exhausted TCP port range without finding a free one")
+                raise ValueError('exhausted TCP port range without finding a free one')
         except socket.error:
             return port
 
@@ -114,6 +114,7 @@ def tool_path():
         binpath = os.path.dirname(os.path.realpath(__file__))
         binpath = os.path.join(binpath, '..', tool)
         return os.path.realpath(binpath)
+
     return _tool_path
 
 
@@ -141,7 +142,7 @@ def run_simvacation(request, tmp_path_factory, tool_path):
         },
         'lmdb': {
             'path': os.path.join(tmpdir, 'lmdb'),
-        }
+        },
     }
 
     redconf = None
@@ -175,8 +176,10 @@ def run_simvacation(request, tmp_path_factory, tool_path):
         return subprocess.run(
             [
                 tool_path('simvacation'),
-                '-c', cfile,
-                '-f', sender,
+                '-c',
+                cfile,
+                '-f',
+                sender,
                 rcpt,
             ],
             env={
